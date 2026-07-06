@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bars: compare quantities</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <section class="start-screen" id="startScreen" aria-labelledby="startTitle">
+      <div class="start-card">
+        <p class="kicker">Bar model game</p>
+        <h1 id="startTitle">Build the model</h1>
+        <button class="start-button" id="startBtn" type="button">Start</button>
+      </div>
+    </section>
+
+    <section class="level-screen is-hidden" id="levelScreen" aria-labelledby="levelTitle">
+      <div class="level-board">
+        <h1 class="sr-only" id="levelTitle">Choose a game</h1>
+        <button class="level-tile first playable" id="firstGameBtn" type="button" aria-label="Open game 1">
+          <span>1</span>
+        </button>
+        <button class="level-tile second playable" id="secondGameBtn" type="button" aria-label="Open game 2">
+          <span>2</span>
+        </button>
+        <button class="level-tile third playable" id="thirdGameBtn" type="button" aria-label="Open game 3">
+          <span>3</span>
+        </button>
+        <button class="level-tile fourth playable" id="fourthGameBtn" type="button" aria-label="Open game 4">
+          <span>4</span>
+        </button>
+        <span class="level-tile fifth" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <main class="game-shell is-hidden" id="gameScreen">
+      <section class="workspace" aria-label="Bar model game">
+        <div class="problem-panel">
+          <div class="problem-copy" id="problemText"></div>
+          <div class="score" aria-live="polite">
+            <span>Task</span>
+            <strong id="taskCounter">1 / 4</strong>
+          </div>
+        </div>
+
+        <section class="bar-palette" aria-label="Bar choices">
+          <button class="bar-token long" type="button" draggable="true" data-bar="long" aria-label="Green bar"></button>
+          <button class="bar-token short" type="button" draggable="true" data-bar="short" aria-label="Yellow bar"></button>
+        </section>
+
+        <div class="model-area">
+          <section class="model-board" aria-label="Problem model">
+            <div class="row top">
+              <label class="name-label" id="topName"></label>
+              <div class="bar-slot" data-slot="top" tabindex="0" role="button" aria-label="Top bar">
+                <input class="bar-label top-bar-label" id="topBarLabel" autocomplete="off" aria-label="Top bar label">
+              </div>
+            </div>
+            <div class="row bottom">
+              <label class="name-label" id="bottomName"></label>
+              <div class="bar-slot" data-slot="bottom" tabindex="0" role="button" aria-label="Bottom bar">
+                <input class="bar-label bottom-bar-label" id="bottomBarLabel" autocomplete="off" aria-label="Bottom bar label">
+                <input class="bar-label gap-label" id="gapLabel" autocomplete="off" aria-label="Difference label">
+              </div>
+            </div>
+          </section>
+          <img class="problem-image is-hidden" id="problemImage" alt="">
+        </div>
+
+        <section class="answer-panel" aria-label="Solution">
+          <div class="equation">
+            <input id="eqA" inputmode="numeric" autocomplete="off" aria-label="First number">
+            <input class="operator-input" id="eqOperator" autocomplete="off" maxlength="1" aria-label="Operation sign">
+            <input id="eqB" inputmode="numeric" autocomplete="off" aria-label="Second number">
+            <span>=</span>
+            <input id="eqC" inputmode="numeric" autocomplete="off" aria-label="Answer">
+          </div>
+          <label class="sentence">
+            <span id="sentenceLead"></span>
+            <input id="sentenceAnswer" inputmode="numeric" autocomplete="off" aria-label="Answer in the sentence">
+            <span id="sentenceTail"></span>
+          </label>
+        </section>
+
+        <footer class="actions">
+          <button class="secondary" id="resetBtn" type="button">Reset</button>
+          <button class="primary" id="checkBtn" type="button">Check</button>
+          <button class="secondary" id="nextBtn" type="button">Next</button>
+        </footer>
+
+        <p class="feedback" id="feedback" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
